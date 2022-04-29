@@ -16,7 +16,7 @@ public class ItemVO {
 	
 	private String name;
 	
-	private Priority priority;
+	private String priority;
 	
 	private String date;
 	
@@ -42,11 +42,11 @@ public class ItemVO {
 		this.name = name;
 	}
 
-	public Priority getPriority() {
+	public String getPriority() {
 		return priority;
 	}
 
-	public void setPriority(Priority priority) {
+	public void setPriority(String priority) {
 		this.priority = priority;
 	}
 

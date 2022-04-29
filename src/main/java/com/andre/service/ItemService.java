@@ -20,17 +20,17 @@ public class ItemService {
 	}
 	
 	public boolean save(ItemVO item) {
-		boolean rs = false;
-		ItemVO persisted = dao.save(item);
-		if(persisted!=null) rs = true;
+		boolean rs;
+		dao.save(item);
+		rs = true;
 		return rs;
 	}
 	
 	public boolean delete(ItemVO item) {
-		boolean rs = false;
+		boolean rs = true;
 		dao.delete(item);
-		Optional<ItemVO> persisted = dao.findById(item.getId());
-		if(persisted==null) rs = true;
+		Optional<ItemVO> present = dao.findById(item.getId());
+		if(present.isPresent()) rs = false;	
 		return rs;
 	}
 	

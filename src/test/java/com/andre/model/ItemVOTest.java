@@ -1,8 +1,7 @@
 package com.andre.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ class ItemVOTest {
 	void testItem_canSetAndGetData() {
 		int id=1 ;
 		String name="Name";
-		Priority priority=Priority.LOW;
+		String priority="LOW";
 		String date="date";
 		String summary="summary";
 		double price = 2.00;
@@ -34,8 +33,8 @@ class ItemVOTest {
 		assertEquals(priority, item.getPriority());
 		assertEquals(summary, item.getSummary());
 		assertEquals(date, item.getDate());
-		assertTrue(price==item.getPrice());
-		assertFalse(item.isWave());
+		assertSame(price,item.getPrice());
+		assertEquals(wave,item.isWave());
 	}
 
 	
