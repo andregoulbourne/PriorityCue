@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.andre.controllers.ItemController;
-import com.andre.model.ItemVO;
+import com.andre.model.ItemDTO;
 import com.andre.service.ItemService;
 
 @SpringBootTest
@@ -35,14 +35,14 @@ class ItemControllerTest {
 	}
 	
 	
-	private ItemVO item=new ItemVO();
+	private ItemDTO item=new ItemDTO();
 	
 	@Test
 	void testUpdateAItem() {
 		assertDoesNotThrow(() -> controller.saveItem(item));
 		assertFalse((boolean) controller.saveItem(item).get("status"));
 		
-		Mockito.when(service.save(item)).thenReturn(true);
+		Mockito.when(service.save(Mockito.any())).thenReturn(true);
 		ReflectionTestUtils.setField(controller, "service", service);
 		assertDoesNotThrow(() -> controller.saveItem(item));
 		assertTrue((boolean) controller.saveItem(item).get("status"));

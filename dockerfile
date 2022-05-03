@@ -9,6 +9,6 @@ RUN ["mvn", "clean", "package"]
 
 FROM openjdk:8-jdk-buster
 
-COPY --from=build /Backend/target/Appointments-app-0.0.1-SNAPSHOT.war app.war
+COPY --from=build /Backend/target/PriorityCue-0.0.1-SNAPSHOT.war app.war
 ENTRYPOINT ["java","-jar","/app.war"]
 

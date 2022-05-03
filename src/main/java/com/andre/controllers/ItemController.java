@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.andre.model.ItemVO;
+import com.andre.model.ItemDTO;
 import com.andre.service.ItemService;
+import com.andre.util.Transfer;
 
 @Controller
 @RequestMapping("items")
@@ -22,65 +23,53 @@ public class ItemController {
 	@Autowired
 	private ItemService service;
 	
+	private Map<String,Object> respMap;
 	
+	
+	//Constants
 	private static final String SUCCESS = "SUCCESS";
 	
 	private static final String ERROR = "ERROR";
-	
 	
 	private static final String DATA ="data";
 	
 	private static final String MSG = "msg";
 	
-	private Map<String,Object> respMap;
+	private static final String STATUS= "status";
+	
 	
 	@GetMapping
 	public @ResponseBody Map<String, Object> getAllItems(){
 		respMap = new HashMap<>();
-		
 		respMap.put(DATA,service.getAll());
 		respMap.put(MSG, SUCCESS);
-		
 		return respMap;
 		
 	}
 	
-	private static final String STATUS= "status";
-	
 	@PostMapping
-	public @ResponseBody Map<String, Object> saveItem(@RequestBody ItemVO item){
+	public @ResponseBody Map<String, Object> saveItem(@RequestBody ItemDTO item){
 		respMap = new HashMap<>();
-		
-		boolean status = service.save(item);
-		
-		respMap.put(STATUS,status);
-		
-		if(status) {
-			respMap.put(MSG, SUCCESS);
-		} else {
-			respMap.put(MSG, ERROR);
-		}
-		
-		return respMap;
-		
+		boolean status = service.save(Transfer.transfer(item));
+		return handleStatus(status);
 	}
 	
 	@DeleteMapping
-	public @ResponseBody Map<String, Object> deleteAItem(@RequestBody ItemVO item){
+	public @ResponseBody Map<String, Object> deleteAItem(@RequestBody ItemDTO item){
 		respMap = new HashMap<>();
+		boolean status = service.delete(Transfer.transfer(item));
+		return handleStatus(status);
+	}
 		
-		boolean status = service.delete(item);
-		
+	// helper method handles boolean status returns a result map
+	private @ResponseBody Map<String, Object> handleStatus(boolean status){
 		respMap.put(STATUS,status);
-		
 		if(status) {
 			respMap.put(MSG, SUCCESS);
 		} else {
 			respMap.put(MSG, ERROR);
 		}
-		
 		return respMap;
-		
 	}
 	
 }

@@ -4,11 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-
-
-class ItemVOTest {
-
-	@Test
+class ItemDTOTest {
+    
+    @Test
 	void testItem_canSetAndGetData() {
 		int id=1 ;
 		String name="Name";
@@ -18,7 +16,7 @@ class ItemVOTest {
 		double price = 2.00;
 		boolean wave = false;
 		
-		ItemVO item = new ItemVO();
+		ItemDTO item = new ItemDTO();
 		item.setId(id);
 		item.setName(name);
 		item.setPriority(priority);
@@ -37,7 +35,4 @@ class ItemVOTest {
 		assertEquals(true,equivalent);
 		assertEquals(wave,item.isWave());
 	}
-
-	
-
 }
