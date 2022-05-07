@@ -13,6 +13,7 @@ public class Transfer {
 		rs.setSummary(item.getSummary());
 		rs.setPrice(item.getPrice());
 		rs.setWave(item.isWave());
+		rs.setDate(item.getDate());
 		return rs;
 	}
 

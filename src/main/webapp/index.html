@@ -1,12 +1,28 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>WriteClientReport</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.37367d026a39f76522fd.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.37367d026a39f76522fd.css"></noscript></head>
-<body>
-  <app-root></app-root>
-<script src="runtime.09cac5369e3ff4c930c4.js" defer></script><script src="polyfills.70bb06b0bf3801a7ca32.js" defer></script><script src="main.986aa945f6fe2b0344f9.js" defer></script>
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+	<title>MyExtGenApp</title>
 
-</body></html>
+  <script type="text/javascript">
+    var Ext = Ext || {};
+    Ext.beforeLoad = function (tags) {
+      //var s = location.search;
+      var profile;
+      profile = 'desktop';
+      Ext.manifest ='generatedFiles/' + profile;
+    };
+  </script>
+
+  <!-- The line below must be kept intact for Sencha Cmd to build your application -->
+  <script id="microloader" data-app="07f1f9d2-a977-45de-a924-9fdabb67b24e" type="text/javascript" src="generatedFiles/bootstrap.js"></script>
+</head>
+  <body class="launching">
+    <div id="splash" style="margin-top:20%;font-family:Arial;font-size:64px;text-align:center;color:#404040;">
+      <div id="theLoadingText">LOADING...</div>
+      <i style="margin:20px;" class="fa fa-spinner fa-spin"></i>
+    </div>
+  </body>
+</html>
