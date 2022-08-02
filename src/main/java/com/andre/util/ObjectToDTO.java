@@ -3,9 +3,13 @@ package com.andre.util;
 import com.andre.model.ItemDTO;
 import com.andre.model.ItemVO;
 
-public class Transfer {
+public class ObjectToDTO {
 	
-	public static ItemVO transfer(ItemDTO item) {
+	private ObjectToDTO() {
+		super();
+	}
+	
+	public static ItemVO convert(ItemDTO item) {
 		ItemVO rs = new ItemVO();
 		rs.setId(item.getId());
 		rs.setName(item.getName());

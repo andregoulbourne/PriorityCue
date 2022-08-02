@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.andre.model.ItemDTO;
 import com.andre.service.ItemService;
-import com.andre.util.Transfer;
+import com.andre.util.ObjectToDTO;
 
 @Controller
 @RequestMapping("items")
@@ -50,14 +50,14 @@ public class ItemController {
 	@PostMapping
 	public @ResponseBody Map<String, Object> saveItem(@RequestBody ItemDTO item){
 		respMap = new HashMap<>();
-		boolean status = service.save(Transfer.transfer(item));
+		boolean status = service.save(ObjectToDTO.convert(item));
 		return handleStatus(status);
 	}
 	
 	@DeleteMapping
 	public @ResponseBody Map<String, Object> deleteAItem(@RequestBody ItemDTO item){
 		respMap = new HashMap<>();
-		boolean status = service.delete(Transfer.transfer(item));
+		boolean status = service.delete(ObjectToDTO.convert(item));
 		return handleStatus(status);
 	}
 		
